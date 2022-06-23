@@ -33,8 +33,8 @@ prepare_r5r_network_dat <- function(){
   link_paths <- link_create_with_dir(input_files, dest_dir)
   on.exit({fs::link_delete(link_paths)}, add = TRUE)
 
-  r5r::setup_r5(data_path = dest_dir) %>%
-    r5r::stop_r5()
+  r5_core <- r5r::setup_r5(data_path = dest_dir)
+  r5r::stop_r5(r5_core)
 
   stopifnot(file.exists(dest_path))
 
