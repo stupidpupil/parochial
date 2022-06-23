@@ -1,10 +1,10 @@
-Package: WalesIshOTPGraph
-Title: WalesIshOTPGraph
+Package: parochial
+Title: parochial
 Version: 0.0.1
 Authors@R: c(
   person("Adam", "Watkins", email = "adam@stupidpupil.co.uk", role = c("aut", "cre"))
   )
-Description: Generate an OTP graph and r5r network file for Wales-ish.
+Description: Cut travel time for bits of Britain
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends: 

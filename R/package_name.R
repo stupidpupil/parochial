@@ -1,3 +1,3 @@
 package_name <- function() {
-  "WalesIshOTPGraph"
+  "parochial"
 }

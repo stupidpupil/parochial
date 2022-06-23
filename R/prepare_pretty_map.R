@@ -1,4 +1,4 @@
-pretty_wales_ish_map <- function(){
+pretty_map <- function(){
 
   geometries <- sf::st_sfc(crs="EPSG:4326")
   trips <- tibble()
@@ -90,8 +90,8 @@ pretty_wales_ish_map <- function(){
   return(plot_map)
 }
 
-prepare_pretty_wales_ish_map <- function(){
-  plot_map <- pretty_wales_ish_map()
+prepare_pretty_map <- function(){
+  plot_map <- pretty_map()
 
   ggplot2::ggsave(plot=plot_map, filename=dir_output("map.png"),    width=440/72, height=490/72, units="in", dpi= 72)
   ggplot2::ggsave(plot=plot_map, filename=dir_output("map.2x.png"), width=440/72, height=490/72, units="in", dpi=144)

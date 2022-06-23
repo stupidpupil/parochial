@@ -18,6 +18,4 @@ importFrom("utils", download.file, unzip)
 
 exportPattern("^download_")
 exportPattern("^prepare_")
-export("pretty_wales_ish_map")
-export("check_test_journeys")
 export("check_config_and_environment")

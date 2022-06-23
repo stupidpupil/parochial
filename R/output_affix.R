@@ -7,5 +7,5 @@ output_affix <- function() {
     }
   }
 
-  "walesish"
+  openssl::sha1(bounds() %>% sf::st_as_text()) %>% as.character() %>% stringr::str_sub(end = 6L)
 }
