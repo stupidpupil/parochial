@@ -1,22 +1,4 @@
-# Wales-ish OTP Graph Generator
-
-This is a bunch to scripts to help assemble OpenTripPlanner graphs that are useable for planning trips, by car or public transport, between places in Wales - including where these trips involve a short journey entirely within England. (It likely also works well enough for planning trips between places in Wales and a small number of English towns just the other side of the border.)
-
-[See the GitHub page for this repository for releases of graphs produced by this script](https://stupidpupil.github.io/wales_ish_otp_graph/).
-
-## Features and Anti-Features
-
-- Downloads OpenStreetMap data from geofabrik.de
-- Downloads Welsh bus etc. data from Traveline (requires registration)
-- Download heavy rail CIF from data.atoc.org (requires registration)
-- Downloads English bus etc. open data from DfT GOV.UK
-- Does some basic checking of a small number of test journeys
-- Includes a Github Actions workflow with parallelisation and caching
-
-### Default Coverage
-- Creates extracts of street and public transport data covering Wales and a strip of the borders
-- Covers Chester, Crewe, Liverpool, Shrewsbury, Hereford, Bristol, Gloucester
-- Doesn't cover Wolverhampton, Birmingham or most of Manchester
+# Parochial
 
 ## Requirements
 - R
@@ -26,8 +8,8 @@ This is a bunch to scripts to help assemble OpenTripPlanner graphs that are usea
 ## How-to
 
 ```R
-devtools::install_github("stupidpupil/WalesIshOTPGraph")
-library(WalesIshOTPGraph)
+devtools::install_github("stupidpupil/parochial")
+library(parochial)
 
 # Complete config.yml
 check_config_and_environment()
