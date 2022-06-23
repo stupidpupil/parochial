@@ -29,7 +29,7 @@ cache_key_for_terrain_50_url <- function(terrain_50_url) {
   if(is.na(ret)){
     # Terrain 50 updates *around* July
     # TODO: Use this fact to produce a more sensible cache key
-    ret <- lubridate::today() %>% add strftime("%Y-%m") 
+    ret <- lubridate::today() %>% strftime("%Y-%m") 
   }
 
   ret <- openssl::sha1(paste0(

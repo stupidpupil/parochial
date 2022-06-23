@@ -9,7 +9,9 @@
 #' @return The path to the downloaded Terrain 50 GAGG zip
 #'
 download_terrain50 <- function(){
-  
+  old_opts <- options(timeout = download_timeout_in_seconds(150*1024*1024))
+  on.exit(options(old_opts))
+
   terrain_50_url <- "https://api.os.uk/downloads/v1/products/Terrain50/downloads?area=GB&format=ASCII+Grid+and+GML+%28Grid%29&redirect"
   cache_key <- cache_key_for_terrain_50_url(terrain_50_url)
 
