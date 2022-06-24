@@ -6,29 +6,10 @@ download_and_prepare_bods_gtfs <- function(){
   output_paths <- c()
 
   for (r in bods_files) {
-    bus_url <- paste0(base_bus_url, r, '/')
-    work_path <- dir_working(r, ".bods.gtfs.zip")
+    work_path <- download_bods(r)
     output_path <- dir_output("gtfs/", r, ".bods.", output_affix(),".gtfs.zip")
 
     output_paths <- c(output_paths, output_path)
-
-    cache_key <- cache_key_for_bods_url(bus_url)
-
-    if(cache_key != cache_key_for_file(work_path)){
-      message("Downloading BODS data for ", r, "...")
-      download.file(bus_url, work_path)
-
-      jsonlite::toJSON(pretty = TRUE, auto_unbox = TRUE, list(
-        SourceUrl = bus_url,
-        SourceDownloadedAt = now_as_iso8601(),
-        SourceLicence = "OGL-UK-3.0",
-        SourceAttribution = "UK Department for Transport",
-        ParochialCacheKey = cache_key
-      )) %>% write(paste0(work_path, ".meta.json"))
-
-    }else{
-      message("Cache hit for ", work_path)
-    }
 
     cache_key <- openssl::sha1(paste0(
       cache_key_for_file(work_path),
