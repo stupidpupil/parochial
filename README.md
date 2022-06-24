@@ -18,14 +18,20 @@ _parochial_ will download:
 - Buffers geospatial bounds where appropriate to ensure adequate coverage
 - Uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
 
+### Outputs
+_parochial_ can prepare:
+- _OpenTripPlanner_ network graphs
+- [{r5r}](https://github.com/ipeaGIT/r5r) network graphs
+- _OSRM_ network graphs
+
 ### Misc
 - Includes a GitHub Actions workflow with extensive parallelisation
 - Supports caching of downloads and outputs, both when run as a GitHub Action and when run locally
 
-## Requirements
+## Minimum requirements
 - R
-- [Java 17](https://adoptium.net)
 - [osmium](https://osmcode.org/osmium-tool/)
+- Support for symlinks (e.g. macOS, Linux including _Windows Subsystem for Linux_)
 
 ## How-to
 
