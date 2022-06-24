@@ -39,7 +39,7 @@ prepare_street_graph <- function(){
 
   processx::run("java", c(java_args(), otp_args))
 
-  stopifnot(file.exists(dest_path))
+  stopifnot("Unknown error writing OTP street graph" = file.exists(dest_path))
 
   list(
     CreatedAt = now_as_iso8601(),

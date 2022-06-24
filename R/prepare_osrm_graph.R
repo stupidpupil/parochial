@@ -28,7 +28,7 @@ prepare_osrm_graph <- function(profile_name="driving"){
 
   unlink(Sys.glob(paste0(dest_path, "*")))
   processx::run("osrm-extract", c("-p", profile_path, link_paths))
-  stopifnot(file.exists(dest_path))
+  stopifnot("Unknown error writing OSRM graph" = file.exists(dest_path))
 
   message("OSRM-Contracting...")
 

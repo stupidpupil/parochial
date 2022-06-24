@@ -26,7 +26,7 @@ pfaedle_a_gtfs_zip <- function(path_to_gtfs_zip, path_to_osm = dir_output("opens
     flags = "-rj0X"
     )
 
-  stopifnot(file.exists(new_gtfs_zip_path))
+  stopifnot("Unknown error rezipping pfaedled GTFS" = file.exists(new_gtfs_zip_path))
 
   new_gtfs <- gtfstools::read_gtfs(new_gtfs_zip_path)
   trip_speeds <- gtfstools::get_trip_speed(new_gtfs) %>%
@@ -73,7 +73,7 @@ prepare_osm_for_pfaedle <- function(in_osm_path, out_osm_path) {
   )
 
   processx::run("osmium", osmium_args)
-  stopifnot(file.exists(out_osm_path))
+  stopifnot("Unknown error writing OSM in XML format for pfaedle" = file.exists(out_osm_path))
 
   return(out_osm_path)
 }

@@ -36,7 +36,7 @@ prepare_r5r_network_dat <- function(){
   r5_core <- r5r::setup_r5(data_path = dest_dir)
   r5r::stop_r5(r5_core)
 
-  stopifnot(file.exists(dest_path))
+  stopifnot("Unknown error writing r5r network.dat" = file.exists(dest_path))
 
   list(
     CreatedAt = now_as_iso8601(),

@@ -29,7 +29,7 @@ gtfstidy_merge_gtfs <- function(in_gtfs_paths, out_gtfs_path){
 
   processx::run(gtfstidy_path(), gtfstidy_args)
 
-  stopifnot(file.exists(out_gtfs_path))
+  stopifnot("Unknown error writing merged GTFS" = file.exists(out_gtfs_path))
 
   return(out_gtfs_path)
 }

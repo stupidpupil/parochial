@@ -18,7 +18,7 @@ cache_key_for_terrain_50_url <- function(terrain_50_url) {
   terrain_50_entry <- terrain_50_directory %>%
     filter(url == terrain_50_url)
 
-  stopifnot(nrow(terrain_50_entry) == 1)
+  stopifnot("Couldn't find Terrain 50 URL in OS Downloads API" = nrow(terrain_50_entry) == 1)
 
   ret <- terrain_50_entry %>% pull(md5) %>% first()
 

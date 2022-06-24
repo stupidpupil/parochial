@@ -11,7 +11,7 @@ gtfstidy_simplify_shapes <- function(path_to_gtfs_zip) {
   )
 
   processx::run(gtfstidy_path(), gtfstidy_args)
-  stopifnot(file.exists(working_filename))
+  stopifnot("Unknown error writing simplified shapes GTFS" = file.exists(working_filename))
 
   unlink(path_to_gtfs_zip)
   file.copy(working_filename, path_to_gtfs_zip)

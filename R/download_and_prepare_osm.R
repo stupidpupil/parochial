@@ -59,7 +59,7 @@ prepare_osm <- function(){
   )
 
   processx::run("osmium", bounded_osmium_args)
-  stopifnot(file.exists(bounded_temp_path))
+  stopifnot("Unknown error writing OSM within bounds" = file.exists(bounded_temp_path))
 
   message("Extracting OSM transport-tagged entities within bounds-plus-20km buffer...")
 
@@ -85,7 +85,7 @@ prepare_osm <- function(){
   )
 
   system(buffered_osmium_command)
-  stopifnot(file.exists(buffered_temp_path))
+  stopifnot("Unknown error writing transport-tagged OSM within buffered bounds" = file.exists(buffered_temp_path))
   unlink(buffered_bounds_geojson_path)
 
   message("Extracting OSM rail-tagged entities...")
@@ -100,7 +100,7 @@ prepare_osm <- function(){
   )
 
   processx::run("osmium", rail_osmium_args)
-  stopifnot(file.exists(rail_temp_path))
+  stopifnot("Unknown error writing rail-tagged OSM" = file.exists(rail_temp_path))
 
 
   message("Merging OSM extracts...")
@@ -126,7 +126,7 @@ prepare_osm <- function(){
 
   processx::run("osmium", merge_osmium_args)
 
-  stopifnot(file.exists(dest_path))
+  stopifnot("Unknown error writing merged OSM" = file.exists(dest_path))
 
   unlink(bounded_temp_path)
   unlink(buffered_temp_path)
