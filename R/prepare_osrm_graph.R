@@ -23,7 +23,7 @@ prepare_osrm_graph <- function(profile_name="driving"){
 
   # TODO - https://stxxl.org/tags/1.4.1/install_config.html
   
-  profile_path <- fs::path_package(package_name(), "inst", "extdata", "osrm", profile_name, ext="lua")
+  profile_path <- fs::path_package(package_name(), "extdata", "osrm", profile_name, ext="lua")
   checkmate::assert_file_exists(profile_path, access="r")
 
   unlink(Sys.glob(paste0(dest_path, "*")))
