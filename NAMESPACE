@@ -18,5 +18,6 @@ importFrom("utils", download.file, unzip)
 
 exportPattern("^download_")
 exportPattern("^prepare_")
+exportPattern("^run_")
 export("check_config_and_environment")
 export("get_atoc_download_url")
