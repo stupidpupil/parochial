@@ -1,4 +1,26 @@
-# Parochial
+# parochial
+
+A R package to make it easier to do travel time analyses in bits of Britain. 
+
+## Features and Anti-Features
+
+### Downloading
+_parochial_ will download:
+- OpenStreetMap data from geofabrik.de
+- Welsh and Scottish bus etc. data from Traveline ([requires registration](https://www.travelinedata.org.uk/traveline-open-data/traveline-national-dataset/))
+- "heavy" rail data from data.atoc.org ([requires registration](https://data.atoc.org/))
+- English bus etc. and Transport for London open data from [DfT BODS GOV.UK](https://data.bus-data.dft.gov.uk/)
+- Terrain elevation data from Ordnance Survey
+
+### Processing
+- Processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
+- Crops map and timetables to a particular geospatial area and period in time
+- Buffers geospatial bounds where appropriate to ensure adequate coverage
+- Uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
+
+### Misc
+- Includes a GitHub Actions workflow with extensive parallelisation
+- Supports caching of downloads and outputs, both when run as a GitHub Action and when run locally
 
 ## Requirements
 - R
