@@ -105,7 +105,7 @@ steps:
       cp output/openstreetmap/* assets/gtfs_and_osm/
 
       mkdir -p assets/gtfs_and_osm/opentripplanner
-      cp output/opentripplanner/build-config.json assets/gtfs_and_osm/opentripplanner/
+      cp /Users/runner/work/_temp/Library/parochial/extdata/otp-config/build-config.json assets/gtfs_and_osm/opentripplanner/
       
       cd assets
       zip -9 -r gtfs_and_osm.zip gtfs_and_osm/
