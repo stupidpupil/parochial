@@ -3,7 +3,7 @@ bounds <- function(buffer_by_metres){
   config_bounds <- config::get()$bounds
 
   if(fs::file_exists(config_bounds)){
-    bounds <- sf::read_sf(config_bounds)
+    bounds <- sf::read_sf(config_bounds) %>%  sf::st_geometry()
   }else{
     bounds <- config::get()$bounds %>% sf::st_as_sfc()    
   }
