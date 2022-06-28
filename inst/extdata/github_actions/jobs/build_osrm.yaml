@@ -35,6 +35,7 @@ steps:
       rm osrm-backend/build/libosrm*
       rm -r osrm-backend/build/flatbuffers-build
       rm -r osrm-backend/mason_packages/headers/
+      rm -r osrm-backend/mason_packages/.binaries/
       rm -r osrm-backend/third_party/
       rm -r osrm-backend/unit_tests/
       rm -r osrm-backend/src/
