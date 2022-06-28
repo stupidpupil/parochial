@@ -93,7 +93,7 @@ steps:
       chmod ugo+x assets/otp_and_graph/run-otp.sh
       curl https://raw.githubusercontent.com/opentripplanner/OpenTripPlanner/dev-2.x/LICENSE -o assets/otp_and_graph/OTP_LICENSE
       cp output/opentripplanner/graph.obj* assets/otp_and_graph/graph/
-      cp  /Users/runner/work/_temp/Library/parochial/extdata/otp-config/router-config.json assets/otp_and_graph/graph/
+      cp  /Users/runner/work/_temp/Library/parochial/extdata/otp_config/router-config.json assets/otp_and_graph/graph/
       cd assets
       zip -9 -r otp_and_graph.zip otp_and_graph/
       cd ..
@@ -105,7 +105,7 @@ steps:
       cp output/openstreetmap/* assets/gtfs_and_osm/
 
       mkdir -p assets/gtfs_and_osm/opentripplanner
-      cp /Users/runner/work/_temp/Library/parochial/extdata/otp-config/build-config.json assets/gtfs_and_osm/opentripplanner/
+      cp /Users/runner/work/_temp/Library/parochial/extdata/otp_config/build-config.json assets/gtfs_and_osm/opentripplanner/
       
       cd assets
       zip -9 -r gtfs_and_osm.zip gtfs_and_osm/

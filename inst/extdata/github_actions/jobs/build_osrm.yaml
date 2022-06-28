@@ -33,8 +33,9 @@ steps:
       cd ../../
       rm -r osrm-backend/build/CMakeFiles
       rm osrm-backend/build/libosrm*
+      rm -r osrm-backend/build/flatbuffers-build
       rm -r osrm-backend/mason_packages/headers/
-      rm -r osrm-backend/third_party/sol2/docs
+      rm -r osrm-backend/third_party/
       rm -r osrm-backend/unit_tests/
       rm -r osrm-backend/src/
       rm -r osrm-backend/docs/
