@@ -4,7 +4,6 @@ parochial_merge:
 
 steps:
   - uses: actions/checkout@v2
-  - parochial_replace_with: write_config
 
   - name: Get Terrain 50 md5
     id: terrain50_md5
@@ -22,11 +21,23 @@ steps:
   - parochial_replace_with: setup_r
     if: steps.cache_terrain50.outputs.cache-hit != 'true'
 
-  - name: Download and prepare_terrain
+  - name: Download terrain
     if: steps.cache_terrain50.outputs.cache-hit != 'true'
     run: |
       devtools::load_all()
       download_terrain50()
+    shell: Rscript {0}
+
+  - name: Delete some upsetting zips with DEFLATE64 compression
+    if: steps.cache_terrain50.outputs.cache-hit != 'true'
+    run: |
+      zip -d data-raw/terr50_gagg_gb.zip "data/sd/sd67_OST50GRID_20220506.zip"
+      zip -d data-raw/terr50_gagg_gb.zip "data/sd/sd68_OST50GRID_20220506.zip"
+
+  - name: Prepare_terrain
+    if: steps.cache_terrain50.outputs.cache-hit != 'true'
+    run: |
+      devtools::load_all()
       prepare_terrain50()
     shell: Rscript {0}
 

@@ -10,7 +10,6 @@ parochial_merge:
 
 steps:
   - uses: actions/checkout@v2
-  - parochial_replace_with: write_config
 
   - name: Download ATOC GTFS artifact
     uses: actions/download-artifact@v2

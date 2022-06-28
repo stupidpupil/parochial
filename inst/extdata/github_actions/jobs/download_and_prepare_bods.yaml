@@ -4,7 +4,6 @@ parochial_merge:
 
 steps:
   - uses: actions/checkout@v2
-  - parochial_replace_with: write_config
 
   - name: Get BODS index page hash
     id: bods_index_page_hash

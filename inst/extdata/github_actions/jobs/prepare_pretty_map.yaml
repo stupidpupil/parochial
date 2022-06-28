@@ -6,7 +6,6 @@ parochial_merge:
 
 steps:
   - uses: actions/checkout@v2
-  - parochial_replace_with: write_config
   - parochial_replace_with: setup_r
 
   - parochial_replace_with: download_artefact_merged_gtfs
