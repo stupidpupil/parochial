@@ -1,5 +1,12 @@
 bounds <- function(buffer_by_metres){
-  bounds <- config::get()$bounds %>% sf::st_as_sfc()
+
+  config_bounds <- config::get()$bounds
+
+  if(fs::file_exists(config_bounds)){
+    bounds <- sf::read_sf(config_bounds)
+  }else{
+    bounds <- config::get()$bounds %>% sf::st_as_sfc()    
+  }
 
   if(is.na(sf::st_crs(bounds))){
     sf::st_crs(bounds) <- "EPSG:4326"
