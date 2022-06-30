@@ -15,10 +15,10 @@ _parochial_ will download:
 ### Processing
 _parochial_
 - processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
-- crops map and timetables to a particular geospatial area and period in time
+- crops maps, using [osmium](https://osmcode.org/osmium-tool/), and timetables to a particular geospatial area and period in time
 - buffers geospatial bounds where appropriate to ensure adequate coverage
-- uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
-- uses [gtfstidy](https://github.com/patrickbr/gtfstidy/) to merge and compress public transport timetables
+- fits public transport routes to roads and railways using [pfaedle](https://github.com/ad-freiburg/pfaedle)
+- merges and compress GTFS timetables using [gtfstidy](https://github.com/patrickbr/gtfstidy/)
 
 ### Outputs
 _parochial_ can prepare:
