@@ -1,6 +1,6 @@
 # parochial
 
-A R package to make it easier to do travel time analyses in bits of Britain. 
+A R package to make it easier to get started with travel time analyses in bits of Britain. 
 
 ## Features and Anti-Features
 
@@ -13,10 +13,12 @@ _parochial_ will download:
 - Terrain elevation data from Ordnance Survey
 
 ### Processing
-- Processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
-- Crops map and timetables to a particular geospatial area and period in time
-- Buffers geospatial bounds where appropriate to ensure adequate coverage
-- Uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
+_parochial_
+- processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
+- crops map and timetables to a particular geospatial area and period in time
+- buffers geospatial bounds where appropriate to ensure adequate coverage
+- uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
+- uses [gtfstidy](https://github.com/patrickbr/gtfstidy/) to merge and compress public transport timetables
 
 ### Outputs
 _parochial_ can prepare:
