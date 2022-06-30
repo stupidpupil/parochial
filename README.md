@@ -22,9 +22,9 @@ _parochial_
 
 ### Outputs
 _parochial_ can prepare:
-- _OpenTripPlanner_ network graphs
-- [{r5r}](https://github.com/ipeaGIT/r5r) network graphs
-- _OSRM_ network graphs
+- [OpenTripPlanner](https://www.opentripplanner.org/) network graphs, good for planning single journeys
+- [{r5r}](https://github.com/ipeaGIT/r5r) network graphs, good for producing many-to-many multimodal public transport travel time matrices
+- [OSRM](http://project-osrm.org/) network graphs, good for producing many-to-many driving travel time matrices
 
 ### Misc
 - Includes a GitHub Actions workflow with extensive parallelisation
