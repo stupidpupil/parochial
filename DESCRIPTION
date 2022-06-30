@@ -8,7 +8,7 @@ Description: Cut travel time for bits of Britain
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends: 
-  R (>= 2.10),
+  R (>= 4.1),
   UK2GTFS
 Imports:
   magrittr,
@@ -38,3 +38,5 @@ Imports:
   fs
 Remotes:
   stupidpupil/UK2GTFS
+SystemRequirements:
+  osmium-tool <https://osmcode.org/osmium-tool/>
