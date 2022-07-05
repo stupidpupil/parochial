@@ -29,6 +29,7 @@ _parochial_ can prepare:
 ### Misc
 - Includes a GitHub Actions workflow with extensive parallelisation
 - Supports caching of downloads and outputs, both when run as a GitHub Action and when run locally
+- Writes metadata alongside outputs, including licensing and coverage info
 
 ## Minimum requirements
 - R
