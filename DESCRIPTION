@@ -4,7 +4,7 @@ Version: 0.0.1
 Authors@R: c(
   person("Adam", "Watkins", email = "adam@stupidpupil.co.uk", role = c("aut", "cre"))
   )
-Description: Cut travel time for bits of Britain
+Description: Cut data sources for travel time analysis in bits of Britain
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends: 
