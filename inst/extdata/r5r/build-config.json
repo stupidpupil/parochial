@@ -1,0 +1,26 @@
+{
+  "speeds":{ 
+    // https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/853603/notes-and-definitions.pdf#page=6
+    "units":"km/h",
+    "values":{
+      "motorway": 78,
+      "motorway_link": 78,
+      "trunk": 44,
+      "trunk_link": 44,
+      "primary": 44,
+      "primary_link": 44,
+      "secondary": 42,
+      "secondary_link": 42,
+      "tertiary": 37,
+      "tertiary_link": 37,
+      "living_street": 14,
+      "pedestrian": 5,
+      "residential": 19,
+      "unclassified": 37,
+      "service": 16,
+      "track": 14,
+      "road": 37
+    },
+    "defaultSpeed": 37
+  }
+}

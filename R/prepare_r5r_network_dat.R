@@ -10,6 +10,7 @@ prepare_r5r_network_dat <- function(){
 
   cache_key <- openssl::sha1(paste0(
     paste0(cache_key_for_file(input_files), collapse=""),
+    openssl::sha1(file(dir_support("r5r/build-config.json"))),
     packageVersion("r5r") %>% as.character()
   )) %>% as.character()
 
@@ -23,6 +24,8 @@ prepare_r5r_network_dat <- function(){
   }
 
   message("Preparing R5r network.dat...")
+
+  prepare_r5r_config()
 
   # Remove any existing 'network.dat' file, as previous failures
   # can result in malformed examples that confuse r5r
