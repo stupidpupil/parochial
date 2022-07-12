@@ -1,6 +1,6 @@
 # parochial
 
-A R package to make it easier to do travel time analyses in bits of Britain. 
+A R package to make it easier to get started with travel time analyses in bits of Britain. 
 
 ## Features and Anti-Features
 
@@ -13,20 +13,23 @@ _parochial_ will download:
 - Terrain elevation data from Ordnance Survey
 
 ### Processing
-- Processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
-- Crops map and timetables to a particular geospatial area and period in time
-- Buffers geospatial bounds where appropriate to ensure adequate coverage
-- Uses [pfaedle](https://github.com/ad-freiburg/pfaedle) to fit public transport routes to roads and railways
+_parochial_
+- processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
+- crops maps, using [osmium](https://osmcode.org/osmium-tool/), and timetables to a particular geospatial area and period in time
+- buffers geospatial bounds where appropriate to ensure adequate coverage
+- fits public transport routes to roads and railways using [pfaedle](https://github.com/ad-freiburg/pfaedle)
+- merges and compress GTFS timetables using [gtfstidy](https://github.com/patrickbr/gtfstidy/)
 
 ### Outputs
 _parochial_ can prepare:
-- _OpenTripPlanner_ network graphs
-- [{r5r}](https://github.com/ipeaGIT/r5r) network graphs
-- _OSRM_ network graphs
+- [OpenTripPlanner](https://www.opentripplanner.org/) network graphs, good for planning single journeys
+- [{r5r}](https://github.com/ipeaGIT/r5r) network graphs, good for producing many-to-many multimodal public transport travel time matrices
+- [OSRM](http://project-osrm.org/) network graphs, good for producing many-to-many driving travel time matrices
 
 ### Misc
 - Includes a GitHub Actions workflow with extensive parallelisation
 - Supports caching of downloads and outputs, both when run as a GitHub Action and when run locally
+- Writes metadata alongside outputs, including licensing and coverage info
 
 ## Minimum requirements
 - R
@@ -84,3 +87,9 @@ Outputs include data derived from the following sources:
 | OpenStreetMap data         | [ODbL-1.0](https://opendatacommons.org/licenses/odbl/)                                  | OpenStreetMap contributors, Geofabrik.de |
 | Terrain 50 elevation data  | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Ordnance Survey                      |
 
+
+## Thanks
+
+This project developed out of a [NHS Welsh Modelling Collaborative](https://twitter.com/nhswmc) hackathon, with the support of colleagues across NHS Wales including James Cooke of the Welsh Ambulance Service.
+
+Important inspiration included the [*graphite* project](https://github.com/datasciencecampus/graphite) produced as part of [a piece of work by the ONS Data Campus](https://datasciencecampus.ons.gov.uk/access-to-services-using-multimodal-transport-networks/). Also of note is the [*OTP4GB* project](https://github.com/odileeds/OTP4GB) and [other work by ODI Leeds](https://odileeds.org/blog/2021-06-08-transportaccessibilityinnorthengland).
