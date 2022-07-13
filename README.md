@@ -31,10 +31,17 @@ _parochial_ can prepare:
 - Supports caching of downloads and outputs, both when run as a GitHub Action and when run locally
 - Writes metadata alongside outputs, including licensing and coverage info
 
-## Minimum requirements
+## Requirements
+
+### Minimum
 - R
 - [osmium](https://osmcode.org/osmium-tool/)
 - Support for symlinks (e.g. macOS, Linux including _Windows Subsystem for Linux_)
+
+### Optional
+- [pfaedle](https://github.com/ad-freiburg/pfaedle)
+- [gtfstidy](https://github.com/patrickbr/gtfstidy/)
+- [OSRM](http://project-osrm.org/)
 
 ## How-to
 
@@ -73,6 +80,11 @@ prepare_transport_graph()
 prepare_r5r_network_dat()
 # output/r5r/ should now contain network.dat
 
+# OSRM
+if(osrm_is_available()){
+  prepare_osrm_graph()
+}
+# output/osrm/ should now contain OSRM graph files
 
 ```
 ## Licence of outputs
