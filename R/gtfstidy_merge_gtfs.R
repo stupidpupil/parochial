@@ -5,7 +5,7 @@ gtfstidy_merge_gtfs <- function(in_gtfs_paths, out_gtfs_path){
 
   unlink(out_gtfs_path)
 
-  gtfstidy_args = c(
+  gtfstidy_args <- c(
     "--remove-red-agencies",
     "--remove-red-routes",
     "--remove-red-stops",

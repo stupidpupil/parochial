@@ -36,7 +36,7 @@ prepare_terrain50 <- function(terr50_zip_path = dir_working("terr50_gagg_gb.zip"
 
   dest_path <- dir_output(output_affix(), ".terr50.tif")
 
-  cache_key = openssl::sha1(paste0(
+  cache_key <- openssl::sha1(paste0(
     cache_key_for_file(vrt_filename),
     bounds() %>% sf::st_as_text()
     )) %>% as.character()

@@ -11,7 +11,7 @@ download_tnds <- function(){
     dest_path <- dir_working(r, ".bus.tnds.zip")
     dest_paths <- c(dest_paths, dest_path)
 
-    src_url = paste0("ftp://",config::get()$tnds_username,":",config::get()$tnds_password,"@ftp.tnds.basemap.co.uk/", r, ".zip")
+    src_url <- paste0("ftp://",config::get()$tnds_username,":",config::get()$tnds_password,"@ftp.tnds.basemap.co.uk/", r, ".zip")
 
     cache_key <- cache_key_for_tnds_url(src_url)
 

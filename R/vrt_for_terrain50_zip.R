@@ -52,11 +52,11 @@ vrt_for_terrain50_zip <- function(terr50_zip_path = "terr50_gagg_gb.zip", vrt_fi
 
   vrt_sources_to_vrt_xml_string <- function(sources_tibble, description){
     # Assume that all have the same resolution
-    XResolution = sources_tibble$XRes[[1]]
-    YResolution = sources_tibble$YRes[[1]]
+    XResolution <- sources_tibble$XRes[[1]]
+    YResolution <- sources_tibble$YRes[[1]]
 
-    RasterXSize = sources_tibble %>% pull(DstRectXMax) %>% max()
-    RasterYSize = sources_tibble %>% pull(DstRectYMax) %>% max()
+    RasterXSize <- sources_tibble %>% pull(DstRectXMax) %>% max()
+    RasterYSize <- sources_tibble %>% pull(DstRectYMax) %>% max()
 
     sources_tibble <- sources_tibble %>%
       mutate(DstRectYOff = RasterYSize - DstRectYOff) %>%

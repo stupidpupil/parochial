@@ -8,7 +8,7 @@ pfaedle_a_gtfs_zip <- function(path_to_gtfs_zip, path_to_osm = dir_output("opens
 
   prepare_osm_for_pfaedle(path_to_osm, paste0(temp_dir_path, "/temp.osm"))
 
-  pfaedle_args = c(
+  pfaedle_args <- c(
     "-D",
     "-c", dir_support("pfaedle.cfg"),
     "-x", paste0(temp_dir_path, "/temp.osm"),
@@ -63,7 +63,7 @@ prepare_osm_for_pfaedle <- function(in_osm_path, out_osm_path) {
 
   message("Writing filtered OSM in XML format for pfaedle...")
 
-  osmium_args = c(
+  osmium_args <- c(
     "tags-filter",
     "--expressions", dir_support("pfaedle_osm_tags.txt"),
     in_osm_path,
