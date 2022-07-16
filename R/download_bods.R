@@ -7,7 +7,7 @@ download_bods <- function(region_code){
   region_code %>% checkmate::assert_character()
 
   if(length(region_code) > 1){
-    return(sapply(region_code, function(r){download_bods(r)}))
+    return(vapply(region_code, function(r){download_bods(r)}))
   }
 
   old_opts <- options(timeout = download_timeout_in_seconds(200*1024*1024))
