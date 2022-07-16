@@ -5,6 +5,8 @@ Authors@R: c(
   person("Adam", "Watkins", email = "adam@stupidpupil.co.uk", role = c("aut", "cre"))
   )
 Description: Cut data sources for travel time analysis in bits of Britain
+URL: https://github.com/stupidpupil/parochial/
+BugReports: https://github.com/stupidpupil/parochial/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends: 
