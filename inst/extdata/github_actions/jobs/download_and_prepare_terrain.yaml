@@ -28,22 +28,6 @@ steps:
       download_terrain50()
     shell: Rscript {0}
 
-  - name: Deal with some upsetting zips with DEFLATE64 compression
-    if: steps.cache_terrain50.outputs.cache-hit != 'true'
-    run: |
-      cd data-raw
-
-      unzip terr50_gagg_gb.zip "data/sd/sd67_OST50GRID_20220506.zip"
-      zip -d terr50_gagg_gb.zip "data/sd/sd67_OST50GRID_20220506.zip"
-      zip terr50_gagg_gb.zip "data/sd/sd67_OST50GRID_20220506.zip"
-
-
-      unzip terr50_gagg_gb.zip "data/sd/sd68_OST50GRID_20220506.zip"
-      zip -d terr50_gagg_gb.zip "data/sd/sd68_OST50GRID_20220506.zip"
-      zip terr50_gagg_gb.zip "data/sd/sd68_OST50GRID_20220506.zip"
-
-      cd ..
-
   - name: Prepare_terrain
     if: steps.cache_terrain50.outputs.cache-hit != 'true'
     run: |
