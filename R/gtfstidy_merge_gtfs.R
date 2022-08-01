@@ -16,6 +16,11 @@ gtfstidy_merge_gtfs <- function(in_gtfs_paths, out_gtfs_path){
 
     "--minimize-ids-char",
 
+    # NOTE: minimise-stoptimes isn't used
+    # because support for GTFS frequencies.txt
+    # is not reliable in some routers 
+    # (e.g. OpenTripPlanner 2.1)
+ 
     # NOTE: Setting max-headway does nothing
     # unless minimise-stoptimes is being used,
     # but better to be future-proof here. See:
