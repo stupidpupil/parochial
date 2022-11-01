@@ -21,7 +21,7 @@ steps:
       path: |
         osrm-backend/build
         osrm-backend/mason_packages
-      key: ${{ runner.os }}-${{ steps.osrm-backend-ref.outputs.ref }}-osrm-v1
+      key: ${{ runner.os }}-${{ steps.osrm-backend-ref.outputs.ref }}-osrm-v2
 
   - name: Build osrm-backend
     if: steps.cache_osrm_backend_build.outputs.cache-hit != 'true'
