@@ -17,7 +17,7 @@ steps:
 
   - name: Cache pfaedle-build
     id: cache_pfaedle_build
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         pfaedle-build

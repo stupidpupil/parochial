@@ -22,7 +22,7 @@ steps:
 
   - name: Cache transport graph
     id: cache_transport_graph
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         output/opentripplanner/graph.obj*

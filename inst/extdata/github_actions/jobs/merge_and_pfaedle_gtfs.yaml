@@ -35,7 +35,7 @@ steps:
 
   - name: Cache Merged GTFS
     id: cache_merged_gtfs
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         output/gtfs/merged.*.gtfs.zip*

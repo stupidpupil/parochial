@@ -12,7 +12,7 @@ steps:
 
   - name: Cache OSM
     id: cache_osm
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         output/openstreetmap/*

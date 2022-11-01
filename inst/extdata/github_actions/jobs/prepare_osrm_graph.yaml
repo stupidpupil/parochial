@@ -16,7 +16,7 @@ steps:
 
   - name: Cache OSRM graph
     id: cache_street_graph
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: output/osrm_driving/*
       key: ${{ hashFiles('config.yml') }}-${{ steps.parochial_cache_keys.outputs.hash }}-osrm_driving-v1

@@ -12,7 +12,7 @@ steps:
 
   - name: Cache Terrain 50
     id: cache_terrain50
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         output/*terr50*

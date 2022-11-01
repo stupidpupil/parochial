@@ -14,7 +14,7 @@ steps:
 
   - name: Cache TNDS
     id: cache_tnds
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         output/gtfs/*.tnds.*.gtfs.zip*

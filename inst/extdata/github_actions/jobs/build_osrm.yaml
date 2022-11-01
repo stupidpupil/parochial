@@ -16,7 +16,7 @@ steps:
 
   - name: Cache osrm-backend/build
     id: cache_osrm_backend_build
-    uses: actions/cache@v2
+    uses: actions/cache@v3
     with:
       path: |
         osrm-backend/build
