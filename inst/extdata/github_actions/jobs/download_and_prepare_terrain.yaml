@@ -36,7 +36,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload Terrain 50 artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: terr50.tif
       path: output/*terr50*

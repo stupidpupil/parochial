@@ -28,7 +28,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload BODS GTFS artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: bods.gtfs.zip
       path: output/gtfs/*.bods.*.gtfs.zip*

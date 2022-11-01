@@ -40,7 +40,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload r5r network.dat artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: network.dat
       path: output/r5r/network.dat*

@@ -32,7 +32,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload TNDS GTFS artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: tnds.gtfs.zip
       path: output/gtfs/*.tnds.*.gtfs.zip*

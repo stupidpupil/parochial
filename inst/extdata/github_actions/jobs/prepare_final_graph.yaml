@@ -50,7 +50,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload transport graph artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: graph.obj
       path: output/opentripplanner/graph.obj*

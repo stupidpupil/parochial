@@ -30,7 +30,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload ATOC GTFS artifact
-    uses: actions/upload-artifact@v2
+    uses: actions/upload-artifact@v3
     with:
       name: atoc.gtfs.zip
       path: output/gtfs/atoc.*.gtfs.zip*
