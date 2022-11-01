@@ -8,7 +8,7 @@ steps:
   - name: Get Terrain 50 md5
     id: terrain50_md5
     run : |
-      echo "::set-output name=md5::$(curl "https://api.os.uk/downloads/v1/products/Terrain50/downloads" | jq '.[0].md5')"
+      echo "md5=$(curl 'https://api.os.uk/downloads/v1/products/Terrain50/downloads' | jq '.[0].md5')" >> $GITHUB_OUTPUT
 
   - name: Cache Terrain 50
     id: cache_terrain50

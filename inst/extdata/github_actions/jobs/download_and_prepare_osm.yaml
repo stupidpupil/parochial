@@ -8,7 +8,7 @@ steps:
   - name: Get Geofabrik ETag
     id: geofabrik_etag
     run : |
-      echo "::set-output name=etag::$(curl -I "https://download.geofabrik.de/europe/great-britain-latest.osm.pbf" | grep "ETag")"
+      echo "etag=$(curl -I 'https://download.geofabrik.de/europe/great-britain-latest.osm.pbf' | grep 'ETag')" >> $GITHUB_OUTPUT
 
   - name: Cache OSM
     id: cache_osm

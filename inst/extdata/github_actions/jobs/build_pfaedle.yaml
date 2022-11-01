@@ -12,7 +12,7 @@ steps:
   - name: Get pfaedle ref
     id: pfaedle-ref
     run: |
-      echo "::set-output name=ref::$(git -C pfaedle rev-parse HEAD)"
+      echo "ref=$(git -C pfaedle rev-parse HEAD)" >> $GITHUB_OUTPUT
     shell: bash
 
   - name: Cache pfaedle-build

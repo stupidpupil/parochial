@@ -8,7 +8,7 @@ steps:
   - name: Get BODS index page hash
     id: bods_index_page_hash
     run : |
-      echo "::set-output name=hash::$(curl "https://data.bus-data.dft.gov.uk/timetable/download/" | md5)"
+      echo "hash=$(curl 'https://data.bus-data.dft.gov.uk/timetable/download/' | md5)" >> $GITHUB_OUTPUT
 
   - name: Cache BODS
     id: cache_bods

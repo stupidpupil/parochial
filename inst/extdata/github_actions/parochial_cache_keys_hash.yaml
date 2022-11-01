@@ -1,6 +1,6 @@
 - name: Derive hash from ParochialCacheKeys
   id: parochial_cache_keys
   run: |
-    echo "::set-output name=hash::$(
+    echo "hash=$(
       ls output/*/*.meta.json output/*.meta.json | sort | xargs jq .ParochialCacheKey | shasum -a 1
-    )"
+    )" >> $GITHUB_OUTPUT

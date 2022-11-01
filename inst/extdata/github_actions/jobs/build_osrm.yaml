@@ -11,7 +11,7 @@ steps:
   - name: Get osrm-backend ref
     id: osrm-backend-ref
     run: |
-      echo "::set-output name=ref::$(git -C osrm-backend rev-parse HEAD)"
+      echo "ref=$(git -C osrm-backend rev-parse HEAD)" >> $GITHUB_OUTPUT
     shell: bash
 
   - name: Cache osrm-backend/build
