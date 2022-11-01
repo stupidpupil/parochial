@@ -3,7 +3,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   - parochial_replace_with: setup_r
 
   - name: Get ATOC URL

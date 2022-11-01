@@ -8,7 +8,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   - parochial_replace_with: write_config
   - parochial_replace_with: setup_r
   - parochial_replace_with: setup_java
@@ -128,7 +128,7 @@ steps:
       cd ..
 
   - name: Checkout graph-releases branch
-    uses: actions/checkout@v2
+    uses: actions/checkout@v3
     with:
       ref: graph-releases
       path: graph-releases

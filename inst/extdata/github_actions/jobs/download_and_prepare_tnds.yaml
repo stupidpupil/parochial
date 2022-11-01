@@ -3,7 +3,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
 
   - name: Get TNDS directory listing hash
     id: tnds_dir_list_hash
