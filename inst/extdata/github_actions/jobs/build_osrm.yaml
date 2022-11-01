@@ -45,6 +45,21 @@ steps:
       rm -r osrm-backend/features/
       rm -r osrm-backend/include/
       rm -r osrm-backend/test/
+      rm -rf osrm-backend/.git
+      rm -rf osrm-backend/.github
+      find osrm-backend -name "*.c" -type f -delete
+      find osrm-backend -name "*.cc" -type f -delete
+      find osrm-backend -name "*.h" -type f -delete
+      find osrm-backend -name "*.cpp" -type f -delete
+      find osrm-backend -name "*.hpp" -type f -delete
+      find osrm-backend -name "*.py" -type f -delete
+      find osrm-backend -name "*.md" -type f -delete
+      find osrm-backend -name "*.rst" -type f -delete
+      find osrm-backend -name "*.txt" -type f -delete
+      find osrm-backend -name "*.pbf" -type f -delete
+      find osrm-backend -name "*.rs" -type f -delete
+      find osrm-backend -name "*.png" -type f -delete
+      find osrm-backend -name "*.jpg" -type f -delete
 
     shell: bash
 
