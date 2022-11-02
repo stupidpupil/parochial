@@ -13,7 +13,7 @@ steps:
   - parochial_replace_with: download_artefact_merged_gtfs
 
   - name: Download street graph artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: streetGraph.obj
       path: output/opentripplanner

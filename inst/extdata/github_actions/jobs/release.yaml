@@ -20,7 +20,7 @@ steps:
     shell: Rscript {0}
 
   - name: Download Terrrain 50 artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: terr50.tif
       path: output
@@ -28,19 +28,19 @@ steps:
   - parochial_replace_with: download_artefact_osm
 
   - name: Download ATOC GTFS artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: atoc.gtfs.zip
       path: output/gtfs
 
   - name: Download TNDS GTFS artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: tnds.gtfs.zip
       path: output/gtfs
 
   - name: Download BODS GTFS artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: bods.gtfs.zip
       path: output/gtfs
@@ -48,31 +48,31 @@ steps:
   - parochial_replace_with: download_artefact_merged_gtfs
 
   - name: Download street graph artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: streetGraph.obj
       path: output/opentripplanner
 
   - name: Download transport graph artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: graph.obj
       path: output/opentripplanner
 
   - name: Download network.dat artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: network.dat
       path: output/r5r
 
   - name: Download osrm graph artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: osrm-graph
       path: output/osrm_driving
 
   - name: Download pretty map artifact
-    uses: actions/download-artifact@v2
+    uses: actions/download-artifact@v3
     with:
       name: map.png
       path: output
