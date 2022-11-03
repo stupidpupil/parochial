@@ -1,0 +1,66 @@
+<!---
+title: "GTFS Summary"
+output:
+  md_document:
+    variant: gfm-yaml_metadata_block
+    preserve_yaml: false
+    toc: false
+    pandoc_args: ["--wrap=preserve", "--standalone"]
+--->
+
+```{r include = FALSE}
+gtfs <- gtfstools::read_gtfs(gtfs_path)
+gtfs$routes <- gtfs$routes |>
+  dplyr::left_join(parochial:::gtfs_route_types()) |>
+  dplyr::mutate(
+    Type = dplyr::case_when(
+      route_type_parochial_group == 'heavy_rail' ~ '🚂',
+      route_type_parochial_group == 'bus' ~ '🚌',
+      route_type_parochial_group == 'coach' ~ '🚌',
+      route_type_parochial_group == 'light_rail' ~ '🚈',
+      route_type_parochial_group == 'ferry' ~ '🚢',
+      route_type_parochial_group == 'aircraft' ~ '✈️',
+      TRUE ~ '🐎'
+    )
+
+  )
+
+```
+
+# `r fs::path_file(gtfs_path)`
+
+## Routes by Agency
+
+```{r echo = FALSE, results = 'asis'}
+  options(knitr.kable.NA = '')
+
+  operators_table <- gtfs$routes |> 
+    dplyr::left_join(gtfs$agency |> dplyr::select(agency_id, agency_name), by='agency_id') |> 
+    dplyr::group_by(agency_name, Type) |> dplyr::count() |> dplyr::ungroup() |>
+    tidyr::pivot_wider(names_from = Type, values_from = n)  |>
+    dplyr::rowwise() |>
+    dplyr::mutate(Total = sum(dplyr::c_across(-agency_name), na.rm=TRUE)) |>
+    dplyr::ungroup() |>
+    dplyr::arrange(-Total) |>
+    dplyr::mutate(CumTotal = cumsum(Total))
+    
+
+  if((operators_table |> nrow()) > 20){
+    major_operators <- operators_table |> dplyr::filter(CumTotal < (0.7*max(CumTotal)))
+    
+    other_operators <- operators_table |> dplyr::filter(CumTotal >= (0.7*max(CumTotal)))
+
+    count_other_operators <- other_operators |> nrow()
+
+    other_operators <- other_operators |>
+      dplyr::select(-agency_name) |>
+      dplyr::summarise_all(function(x){sum(x, na.rm=TRUE)}) |>
+      dplyr::mutate(agency_name = paste0("*Other agencies (n=", count_other_operators, ")*"))
+
+    operators_table <- major_operators |>
+      dplyr::bind_rows(other_operators)
+  }
+
+  operators_table |> dplyr::select(-CumTotal) |> dplyr::rename(Agency = agency_name) |> knitr::kable()
+```
+
