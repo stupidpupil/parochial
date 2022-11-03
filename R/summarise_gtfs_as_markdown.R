@@ -1,11 +1,23 @@
-summarise_gtfs_as_markdown <- function(gtfs_path){
+summarise_gtfs_as_markdown <- function(gtfs_paths){
 
-	path_to_gtfs_summary_rmd <- dir_support("gtfs_summary.Rmd")
+  if(length(gtfs_paths) == 0){
+    return("")
+  }
 
-	temp_markdown_path <- tempfile(tmpdir = dir_working(), fileext=".md")
+  checkmate::assert_file_exists(gtfs_paths)
 
-	on.exit(fs::file_delete(temp_markdown_path))
-	knitr::knit(path_to_gtfs_summary_rmd, temp_markdown_path)
+  if(length(gtfs_paths) > 1){
+    return(gtfs_paths |> purrr::map_chr(summarise_gtfs_as_markdown) |> paste0(collapse = "\n\n"))
+  }else{
+    gtfs_path <- gtfs_paths
+  }
 
-	readr::read_file(temp_markdown_path)
+  path_to_gtfs_summary_rmd <- dir_support("gtfs_summary.Rmd")
+
+  temp_markdown_path <- tempfile(tmpdir = dir_working(), fileext=".md")
+
+  on.exit(fs::file_delete(temp_markdown_path))
+  knitr::knit(path_to_gtfs_summary_rmd, temp_markdown_path)
+
+  readr::read_file(temp_markdown_path)
 }
