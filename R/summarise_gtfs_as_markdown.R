@@ -12,6 +12,8 @@ summarise_gtfs_as_markdown <- function(gtfs_paths){
     gtfs_path <- gtfs_paths
   }
 
+  gtfs_path <- fs::path_wd(gtfs_path)
+
   path_to_gtfs_summary_rmd <- dir_support("gtfs_summary.Rmd")
 
   temp_markdown_path <- tempfile(tmpdir = dir_working(), fileext=".md")
