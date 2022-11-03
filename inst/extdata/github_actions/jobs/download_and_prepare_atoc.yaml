@@ -10,7 +10,7 @@ steps:
     id: atoc_url
     run: |
       devtools::load_all()
-      cat(paste0("url=", get_atoc_download_url(),"\n"), Sys.getenv("GITHUB_OUTPUT"))
+      cat(paste0("url=", get_atoc_download_url(),"\n"), file=Sys.getenv("GITHUB_OUTPUT"))
     shell: Rscript {0}
 
   - name: Cache ATOC
