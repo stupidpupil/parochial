@@ -4,21 +4,21 @@
     "maxDirectStreetDurationSeconds": 43200,
     "walkReluctance": 13,
 
-    "transferSlack": 180, //seconds - 3 minutes
-    "boardSlackForMode": {//seconds
-      "AIRPLANE":4200, //70 minutes
-      "BUS":       45,
-      "RAIL":      45,
-      "FERRY":   1200  //20 minutes
+    "transferSlack": "3m", 
+    "boardSlackForMode": {
+      "AIRPLANE":"70m", 
+      "BUS":     "45s",
+      "RAIL":    "45s",
+      "FERRY":   "20m"
     },
-    "alightSlackForMode": {//seconds
-      "AIRPLANE": 900, //15 minutes
-      "BUS":       90,
-      "RAIL":      45,
-      "FERRY":   1200  //20 minutes
+    "alightSlackForMode": {
+      "AIRPLANE": "15m",
+      "BUS":      "90s",
+      "RAIL":     "45s",
+      "FERRY":    "20m"
     }
   },
-  "streetRoutingTimeout":60,
+  "streetRoutingTimeout":"60s",
   "transit": {
     "dynamicSearchWindow": {
       "minWinTimeMinutes":  240,
