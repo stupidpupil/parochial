@@ -1,5 +1,5 @@
 - name: Write config.yml
-  uses: DamianReeves/write-file-action@v1.0
+  uses: DamianReeves/write-file-action@v1.2
   with:
     path: ${{ github.workspace }}/config.yml
     contents: |
