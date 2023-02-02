@@ -46,15 +46,42 @@ prepare_osm <- function(){
 
   message("Preparing OpenStreetMap extract...")
 
+  message("Extracting OSM within bounds-plus-20km buffer...")
+
+  buffered_bounds_geojson_path <- tempfile(tmpdir = dir_working(), fileext=".geojson")
+  buffered_temp_path <- tempfile(tmpdir = dir_working(), fileext=".osm.pbf")
+
+  on.exit(fs::file_delete(buffered_bounds_geojson_path))
+  on.exit(fs::file_delete(buffered_temp_path))
+
+  bounds(buffer_by_metres = 20000) %>%
+    sf::st_write(buffered_bounds_geojson_path)
+
+  buffered_osmium_args <- c(
+    "extract",
+    "-p", buffered_bounds_geojson_path,
+    "-s", "smart",
+    "-S", "complete-partial-relations=80",
+    "-f", "pbf,pbf_compression=lz4",
+    src_path,
+    "-o", buffered_temp_path
+  )
+
+  processx::run("osmium", buffered_osmium_args)
+  stopifnot("Unknown error writing OSM within buffered bounds" = file.exists(buffered_temp_path))
+
   message("Extracting OSM within bounds...")
 
   bounded_temp_path <- tempfile(tmpdir = dir_working(), fileext=".osm.pbf")
+  on.exit(fs::file_delete(bounded_temp_path))
 
   bounded_osmium_args <- c(
     "extract",
     "-p", path_to_bounds_geojson(),
     "-s", "smart",
-    src_path,
+    "-S", "complete-partial-relations=80",
+    "-f", "pbf,pbf_compression=lz4",
+    buffered_temp_path,
     "-o", bounded_temp_path
   )
 
@@ -63,34 +90,24 @@ prepare_osm <- function(){
 
   message("Extracting OSM transport-tagged entities within bounds-plus-20km buffer...")
 
-  buffered_bounds_geojson_path <- tempfile(tmpdir = dir_working(), fileext=".geojson")
-  buffered_temp_path <- tempfile(tmpdir = dir_working(), fileext=".osm.pbf")
+  buffered_transport_temp_path <- tempfile(tmpdir = dir_working(), fileext=".osm.pbf")
+  on.exit(fs::file_delete(buffered_transport_temp_path))
 
-  bounds(buffer_by_metres = 20000) %>%
-    sf::st_write(buffered_bounds_geojson_path)
-
-  # TODO - replace with processx::run()
-  # More complicated because of the use of a pipe
-  buffered_osmium_command <- paste0(
-    "osmium tags-filter ",
-    "--expressions \"", dir_support("pfaedle_osm_tags.txt"), "\"", 
-    " \"", src_path, "\" -f pbf",
-    " | ",
-    "osmium extract -p ",
-    "\"", buffered_bounds_geojson_path, "\"",
-    " -s simple ",
-    " -F pbf ",
-    "-",
-    " -o \"", buffered_temp_path, "\""
+  buffered_transport_osmium_args <- c(
+    "tags-filter",
+    "--expressions", dir_support("pfaedle_osm_tags.txt"),
+    "-f", "pbf,pbf_compression=lz4",
+    buffered_temp_path,
+    "-o", buffered_transport_temp_path
   )
 
-  system(buffered_osmium_command)
-  stopifnot("Unknown error writing transport-tagged OSM within buffered bounds" = file.exists(buffered_temp_path))
-  unlink(buffered_bounds_geojson_path)
+  processx::run("osmium", buffered_transport_osmium_args)
+  stopifnot("Unknown error writing OSM transport-tagged entities within bounds-plus-20km buffer" = file.exists(buffered_transport_temp_path))
 
   message("Extracting OSM rail-tagged entities...")
 
   rail_temp_path <- tempfile(tmpdir = dir_working(), fileext=".osm.pbf")
+  on.exit(fs::file_delete(rail_temp_path))
 
   rail_osmium_args <- c(
     "tags-filter",
@@ -119,7 +136,7 @@ prepare_osm <- function(){
   merge_osmium_args <- c(
     "merge",
     bounded_temp_path,
-    buffered_temp_path,
+    buffered_transport_temp_path,
     rail_temp_path,
     "-o", dest_path
   )
@@ -127,10 +144,6 @@ prepare_osm <- function(){
   processx::run("osmium", merge_osmium_args)
 
   stopifnot("Unknown error writing merged OSM" = file.exists(dest_path))
-
-  unlink(bounded_temp_path)
-  unlink(buffered_temp_path)
-  unlink(rail_temp_path)
 
   list(
     CreatedAt = now_as_iso8601(),
