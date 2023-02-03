@@ -1,7 +1,13 @@
 gtfs_keep_in_spatial_bounds <- function(gtfs, spatial_bounds, additional_stop_ids=NULL) {
 
+  req_stops_cols <- c(
+    stop_lat = NA_real_,
+    stop_lon = NA_real_,
+    parent_station = NA_character_
+  )
+
   gtfs$stops <- gtfs$stops %>% 
-    dplyr::union_all(tibble(parent_station=character())) %>%
+    tibble::add_column(!!!req_stops_cols[setdiff(names(req_stops_cols), colnames(gtfs$stops))]) %>%
     mutate(
       stop_lat = as.numeric(stop_lat),
       stop_lon = as.numeric(stop_lon),
