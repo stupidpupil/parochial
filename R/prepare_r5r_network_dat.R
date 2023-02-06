@@ -43,8 +43,8 @@ prepare_r5r_network_dat <- function(){
 
   list(
     CreatedAt = now_as_iso8601(),
-    CreatedWithR5rVersion = r5r::r5r_sitrep()$r5r_package_version,
-    CreatedWithR5Version = r5r::r5r_sitrep()$r5_jar_version,
+    CreatedWithR5rVersion = r5r::r5r_sitrep()$r5r_package_version |> as.character(),
+    CreatedWithR5Version = r5r::r5r_sitrep()$r5_jar_version |> as.character(),
     DerivedFrom = describe_file(input_files),
     Coverage = parochial_coverage_as_list(), # TODO - Determine from input files
     ParochialCacheKey = cache_key
