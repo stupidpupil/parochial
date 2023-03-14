@@ -4,7 +4,7 @@ run_opentripplanner <- function(code, opentripplanner_dir = dir_output("opentrip
 
   px <- start_program(
     "java", c(java_args(), "-jar", dir_working("otp.jar"), "--load", opentripplanner_dir), 
-    "Started listener bound to \\[0.0.0.0:8080\\]", timeout=240)
+    "Started listener bound to \\[0.0.0.0:8080\\]", timeout=480)
 
   close(px$get_output_connection())
 
