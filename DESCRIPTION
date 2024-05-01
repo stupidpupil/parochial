@@ -20,7 +20,7 @@ Imports:
   tidyr,
   stringr,
   ggplot2,
-  r5r,
+  r5r (>= 2.0.0),
   config,
   checkmate,
   sf,
