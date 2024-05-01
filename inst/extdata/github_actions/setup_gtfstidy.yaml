@@ -1,5 +1,7 @@
-- uses: actions/setup-go@v3
+- uses: actions/setup-go@v5
+  with:
+    go-version: 'stable'
 
 - name: Get gtfstidy
   run: |
-    go install github.com/patrickbr/gtfstidy@latest
+    go install github.com/patrickbr/gtfstidy@25d4d6d1079a5926d9a558546bbe36d5b4cdb45f
