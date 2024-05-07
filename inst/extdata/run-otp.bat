@@ -9,16 +9,16 @@ PATH %PATH%;%JAVA_HOME%\bin\
 WHERE /q java
 if %ERRORLEVEL% NEQ 0 (
   echo It looks like you need to install Java.
-  echo Try installing OpenJDK 17 from https://adoptium.net/ !
+  echo Try installing OpenJDK 21 from https://adoptium.net/ !
   pause
   exit
 )
 
 for /f tokens^=2-5^ delims^=.-_^" %%j in ('java -fullversion 2^>^&1') do set "JAVA_MAJOR_VERSION=%%j%%k%%l%%m"
 
-if %JAVA_MAJOR_VERSION% LSS 17 (
+if %JAVA_MAJOR_VERSION% LSS 21 (
   echo It looks like you need a newer version of Java.
-  echo Try installing OpenJDK 17 from https://adoptium.net/ !
+  echo Try installing OpenJDK 21 from https://adoptium.net/ !
   pause
   exit
 )
