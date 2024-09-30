@@ -28,12 +28,16 @@ prepare_osrm_graph <- function(profile_name="driving"){
 
   unlink(Sys.glob(paste0(dest_path, "*")))
   processx::run("osrm-extract", c("-p", profile_path, link_paths))
-  stopifnot("Unknown error writing OSRM graph" = file.exists(dest_path))
-
+  
+  stopifnot("Unknown error writing OSRM graph" = file.exists(paste0(dest_path,".edges"))) # HACK
+  
   message("OSRM-Contracting...")
 
   processx::run("osrm-contract", dest_path)
 
+  stopifnot("Unknown error writing OSRM graph" = file.exists(paste0(dest_path, ".hsgr"))) # HACK
+
+  
   # TODO - optionally clean-up files that osrm-routed doesn't need
   # https://github.com/Project-OSRM/osrm-backend/wiki/Toolchain-file-overview
 
