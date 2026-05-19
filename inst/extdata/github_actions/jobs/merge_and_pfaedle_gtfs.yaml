@@ -1,9 +1,7 @@
 needs: [
-  'download_and_prepare_atoc', 
-  'download_and_prepare_tnds', 
-  'download_and_prepare_bods',
-  'download_and_prepare_osm',
-  'build_pfaedle']
+  'download_and_prepare_gtfs', 
+  'download_and_prepare_osm']
+#  'build_pfaedle']
 runs-on: macOS-latest
 parochial_merge:
   - env
@@ -35,8 +33,8 @@ steps:
   - parochial_replace_with: setup_osmium
     if: steps.cache_merged_gtfs.outputs.cache-hit != 'true'
 
-  - parochial_replace_with: setup_pfaedle
-    if: steps.cache_merged_gtfs.outputs.cache-hit != 'true'
+#  - parochial_replace_with: setup_pfaedle
+#    if: steps.cache_merged_gtfs.outputs.cache-hit != 'true'
 
   - parochial_replace_with: setup_gtfstidy
     if: steps.cache_merged_gtfs.outputs.cache-hit != 'true'
@@ -45,7 +43,7 @@ steps:
     if: steps.cache_merged_gtfs.outputs.cache-hit != 'true'
     run: |
       devtools::load_all()
-      prepare_merged_gtfs(should_pfaedle = TRUE)
+      prepare_merged_gtfs(should_pfaedle = FALSE)
     shell: Rscript {0}
 
   - name: Upload Merged GTFS artifact

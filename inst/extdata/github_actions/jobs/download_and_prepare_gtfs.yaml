@@ -3,7 +3,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v5
+  - uses: actions/checkout@v6
 
   - name: Get Date
     id: get-date
@@ -12,17 +12,17 @@ steps:
     shell: bash
 
   - name: Cache TravelWhiz GTFS
-    id: cache_travel_whiz_gtfs
+    id: cache_travel_whizgtfs
     uses: actions/cache@v5
     with:
       path: output/gtfs/*.gtfs.zip*
       key: ${{ steps.get-date.outputs.date }}-${{ hashFiles('config.yml') }}-travelwhiz.gtfs-v1
 
   - parochial_replace_with: setup_r
-    if: steps.cache_bods.outputs.cache-hit != 'true'
+    if: steps.cache_travel_whizgtfs.outputs.cache-hit != 'true'
 
   - name: Download and prepare TravelWhiz GTFS
-    if: steps.cache_bods.outputs.cache-hit != 'true'
+    if: steps.cache_travel_whizgtfs.outputs.cache-hit != 'true'
     run: |
       devtools::load_all()
       download_travelwhiz_bus_metro_gtfs()
@@ -31,7 +31,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload TravelWhiz GTFS artifact
-    uses: actions/upload-artifact@v4
+    uses: actions/upload-artifact@v7
     with:
       name: travelwhiz.gtfs.zip
       path: output/gtfs/*.gtfs.zip*

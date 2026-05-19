@@ -3,7 +3,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v5
+  - uses: actions/checkout@v6
 
   - name: Get Terrain 50 md5
     id: terrain50_md5
@@ -36,7 +36,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload Terrain 50 artifact
-    uses: actions/upload-artifact@v4
+    uses: actions/upload-artifact@v7
     with:
       name: terr50.tif
       path: output/*terr50*

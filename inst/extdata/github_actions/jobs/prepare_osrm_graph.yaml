@@ -6,7 +6,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v5
 
   - parochial_replace_with: download_artefact_osm
 
@@ -16,7 +16,7 @@ steps:
 
   - name: Cache OSRM graph
     id: cache_street_graph
-    uses: actions/cache@v3
+    uses: actions/cache@v5
     with:
       path: output/osrm_driving/*
       key: ${{ hashFiles('config.yml') }}-${{ steps.parochial_cache_keys.outputs.hash }}-osrm_driving-v1
@@ -32,7 +32,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload osrm outputs artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v7
     with:
       name: osrm-graph
       path: output/osrm_driving/*

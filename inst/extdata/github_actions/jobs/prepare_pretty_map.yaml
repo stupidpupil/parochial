@@ -5,7 +5,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v5
   - parochial_replace_with: setup_r
 
   - parochial_replace_with: download_artefact_merged_gtfs
@@ -17,7 +17,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload map artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v7
     with:
       name: map.png
       path: output/map*.png*

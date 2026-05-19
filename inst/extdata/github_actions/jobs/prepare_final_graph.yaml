@@ -13,7 +13,7 @@ steps:
   - parochial_replace_with: download_artefact_merged_gtfs
 
   - name: Download street graph artifact
-    uses: actions/download-artifact@v3
+    uses: actions/download-artifact@v8
     with:
       name: streetGraph.obj
       path: output/opentripplanner
@@ -22,7 +22,7 @@ steps:
 
   - name: Cache transport graph
     id: cache_transport_graph
-    uses: actions/cache@v3
+    uses: actions/cache@v5
     with:
       path: |
         output/opentripplanner/graph.obj*

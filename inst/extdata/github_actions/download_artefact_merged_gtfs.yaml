@@ -1,5 +1,5 @@
 - name: Download Merged GTFS artifact
-  uses: actions/download-artifact@v2
+  uses: actions/download-artifact@v8
   with:
     name: merged.gtfs.zip
     path: output/gtfs

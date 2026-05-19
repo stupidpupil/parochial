@@ -6,11 +6,11 @@
 name: build-and-release
 
 jobs:
-  build_pfaedle:
-    parochial_merge: jobs/build_pfaedle
-
-  build_osrm:
-    parochial_merge: jobs/build_osrm
+#  build_pfaedle:
+#    parochial_merge: jobs/build_pfaedle
+#
+#  build_osrm:
+#    parochial_merge: jobs/build_osrm
 
   download_and_prepare_terrain:
     parochial_merge: jobs/download_and_prepare_terrain
@@ -21,8 +21,8 @@ jobs:
   prepare_street_graph:
     parochial_merge: jobs/prepare_street_graph
 
-  prepare_osrm_graph:
-    parochial_merge: jobs/prepare_osrm_graph
+#  prepare_osrm_graph:
+#    parochial_merge: jobs/prepare_osrm_graph
 
   download_and_prepare_gtfs:
     parochial_merge: jobs/download_and_prepare_gtfs
@@ -39,6 +39,6 @@ jobs:
   prepare_r5r_network_dat:
     parochial_merge: jobs/prepare_r5r_network_dat
 
-  release:
-    parochial_merge: jobs/release
+#  release:
+#    parochial_merge: jobs/release
 
