@@ -5,10 +5,10 @@ parochial_merge:
 steps:
   - uses: actions/checkout@v6
 
-  - name: Get Geofabrik ETag
-    id: geofabrik_etag
+  - name: Get Geofabrik Location
+    id: geofabrik_location
     run : |
-      echo "etag=$(curl -I 'https://download.geofabrik.de/europe/great-britain-latest.osm.pbf' | grep 'ETag')" >> $GITHUB_OUTPUT
+      echo "loc=$(curl -I 'https://download.geofabrik.de/europe/great-britain-latest.osm.pbf' | grep 'Location')" >> $GITHUB_OUTPUT
 
   - name: Cache OSM
     id: cache_osm
@@ -16,7 +16,7 @@ steps:
     with:
       path: |
         output/openstreetmap/*
-      key: ${{ steps.geofabrik_etag.outputs.etag }}-${{ hashFiles('config.yml') }}-osm-v1
+      key: ${{ steps.geofabrik_location.outputs.loc }}-${{ hashFiles('config.yml') }}-osm-v1
 
   - parochial_replace_with: setup_r
     if: steps.cache_osm.outputs.cache-hit != 'true'
