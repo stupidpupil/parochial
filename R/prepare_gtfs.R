@@ -1,13 +1,12 @@
-download_and_prepare_bods_gtfs <- function(){
+prepare_gtfs <- function(){
 
-  bods_files <- intersecting_regions_and_nations() %>% pull(bods_itm_code) %>% na.omit()
-  base_bus_url <- "https://data.bus-data.dft.gov.uk/timetable/download/gtfs-file/"
+  working_gtfs_files <- list.files(dir_working(), pattern = ".+\\.gtfs\\.zip$", full.names=TRUE)
 
   output_paths <- c()
 
-  for (r in bods_files) {
-    work_path <- download_bods(r)
-    output_path <- dir_output("gtfs/", r, ".bods.", output_affix(),".gtfs.zip")
+  for (work_path in working_gtfs_files) {
+
+    output_path <- dir_output("gtfs/", work_path %>% basename()  %>% basename() %>% stringr::str_replace("\\.gtfs\\.zip", paste0(".", output_affix(), ".gtfs.zip" )) )
 
     output_paths <- c(output_paths, output_path)
 
@@ -19,7 +18,7 @@ download_and_prepare_bods_gtfs <- function(){
     as.character()
 
     if(cache_key != cache_key_for_file(output_path)){
-      message("Preparing GTFS from \'", r, "\' BODS timetables...")
+      message("Preparing GTFS from \'", work_path, "\' ...")
       gtfs <- gtfstools::read_gtfs(work_path)
       gtfs <- gtfs %>% gtfs_parochialise()
       gtfs %>% gtfstools::write_gtfs(output_path)

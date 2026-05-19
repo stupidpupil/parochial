@@ -1,6 +1,7 @@
 download_otp <- function(){
 
-  otp_url <- "https://github.com/opentripplanner/OpenTripPlanner/releases/download/v2.5.0/otp-2.5.0-shaded.jar"
+  otp_url <- "https://github.com/opentripplanner/OpenTripPlanner/releases/download/v2.9.0/otp-shaded-2.9.0.jar"
+
   cache_key <- openssl::sha1(otp_url) %>% as.character()
 
   dest_path <- dir_working("otp.jar")

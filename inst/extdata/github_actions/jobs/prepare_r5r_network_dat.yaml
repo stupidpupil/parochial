@@ -6,7 +6,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v5
 
   - parochial_replace_with: download_artefact_osm
 
@@ -16,7 +16,7 @@ steps:
 
   - name: Cache r5r network.dat
     id: cache_network_dat
-    uses: actions/cache@v3
+    uses: actions/cache@v5
     with:
       path: |
         output/r5r/network.dat*
@@ -25,12 +25,8 @@ steps:
   - parochial_replace_with: setup_r
     if: steps.cache_network_dat.outputs.cache-hit != 'true'
 
-  - name: Install Java 21
+  - parochial_replace_with: setup_java_21
     if: steps.cache_network_dat.outputs.cache-hit != 'true'
-    uses: actions/setup-java@v3
-    with:
-      distribution: 'adopt'
-      java-version: '21'
 
   - name: Prepare r5r network.dat
     if: steps.cache_network_dat.outputs.cache-hit != 'true'
@@ -40,7 +36,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload r5r network.dat artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v7
     with:
       name: network.dat
       path: output/r5r/network.dat*

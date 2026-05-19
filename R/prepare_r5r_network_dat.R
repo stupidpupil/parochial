@@ -5,7 +5,8 @@ prepare_r5r_network_dat <- function(){
 
   input_files <- c(
     Sys.glob(dir_output("openstreetmap/*.osm.pbf")),
-    paths_to_active_gtfs()
+    paths_to_active_gtfs(),
+    Sys.glob(dir_output("*.terr50.tif"))
   )
 
   cache_key <- openssl::sha1(paste0(
@@ -36,7 +37,7 @@ prepare_r5r_network_dat <- function(){
   link_paths <- link_create_with_dir(input_files, dest_dir)
   on.exit({fs::link_delete(link_paths)}, add = TRUE)
 
-  r5_core <- r5r::setup_r5(data_path = dest_dir)
+  r5_core <- r5r::build_network(data_path = dest_dir)
   r5r::stop_r5(r5_core)
 
   stopifnot("Unknown error writing r5r network.dat" = file.exists(dest_path))

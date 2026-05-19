@@ -7,14 +7,11 @@ A R package to make it easier to get started with travel time analyses in bits o
 ### Downloading
 _parochial_ will download:
 - OpenStreetMap data from geofabrik.de
-- Welsh and Scottish bus etc. data from Traveline ([requires registration](https://www.travelinedata.org.uk/traveline-open-data/traveline-national-dataset/))
-- "heavy" rail data from data.atoc.org ([requires registration](https://data.atoc.org/))
-- English bus etc. and Transport for London open data from [DfT BODS GOV.UK](https://data.bus-data.dft.gov.uk/)
+- public transport timetable data from TravelWhiz
 - Terrain elevation data from Ordnance Survey
 
 ### Processing
 _parochial_
-- processes TransXChange and CIF timetables to GTFS using [{UK2GTFS}](https://github.com/ITSLeeds/UK2GTFS)
 - crops maps, using [osmium](https://osmcode.org/osmium-tool/), and timetables to a particular geospatial area and period in time
 - buffers geospatial bounds where appropriate to ensure adequate coverage
 - fits public transport routes to roads and railways using [pfaedle](https://github.com/ad-freiburg/pfaedle)
@@ -52,11 +49,9 @@ library(parochial)
 # Complete config.yml
 check_config_and_environment()
 
-download_atoc()
-prepare_atoc_gtfs()
-download_tnds()
-prepare_tnds_gtfs()
-download_and_prepare_bods_gtfs()
+download_travelwhiz_bus_metro_gtfs()
+download_travelwhiz_nationalrail_gtfs()
+
 download_and_prepare_osm()
 
 # If you want to include elevation data (e.g. for walking, cycling)
@@ -93,11 +88,13 @@ Outputs include data derived from the following sources:
 
 | Data                       | License                                                                             | Source                                   |
 |----------------------------|-------------------------------------------------------------------------------------|------------------------------------------|
-| ATOC Heavy Rail Timetables | [CC-BY-2.0](https://creativecommons.org/licenses/by/2.0/uk/legalcode)    | RSP Limited (Rail Delivery Group)                              |
-| DfT Bus Open Data Service (BODS) | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Department for Transport (UK Government)  |
-| Traveline National Data Set (TNDS) | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Traveline  |
 | OpenStreetMap data         | [ODbL-1.0](https://opendatacommons.org/licenses/odbl/)                                  | OpenStreetMap contributors, Geofabrik.de |
-| Terrain 50 elevation data  | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Ordnance Survey                      |
+| Terrain 50 elevation data  | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Ordnance Survey                     |
+| TravelWhiz GTFS data       | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/uk/legalcode)               | TravelWhiz                               |
+| ATOC Heavy Rail Timetables | [CC-BY-2.0](https://creativecommons.org/licenses/by/2.0/uk/legalcode)               | RSP Limited (Rail Delivery Group)        |
+| DfT Bus Open Data Service (BODS) | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Department for Transport (UK Government)  |
+| Traveline National Data Set (TNDS) | [OGL-UK-3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Traveline                   |
+
 
 
 ## Thanks

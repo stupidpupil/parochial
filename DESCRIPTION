@@ -10,8 +10,7 @@ BugReports: https://github.com/stupidpupil/parochial/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends: 
-  R (>= 4.1),
-  UK2GTFS
+  R (>= 4.1)
 Imports:
   magrittr,
   tibble,
@@ -37,9 +36,6 @@ Imports:
   terra,
   RCurl,
   openssl,
-  yaml,
-  fs
-Remotes:
-  stupidpupil/UK2GTFS
+  yaml
 SystemRequirements:
   osmium-tool <https://osmcode.org/osmium-tool/>

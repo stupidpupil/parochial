@@ -1,12 +1,4 @@
 default:
-  # http://data.atoc.org/user/register
-  atoc_username: my_atoc_username
-  atoc_password: P@55w0rd
-  
-  # https://www.travelinedata.org.uk/traveline-open-data/traveline-national-dataset/
-  tnds_username: my_tnds_username@example.org
-  tnds_password: P@55w0rd
-  
   # affects the naming of various output files
   output_affix: walesish
 

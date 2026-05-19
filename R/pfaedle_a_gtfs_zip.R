@@ -9,7 +9,7 @@ pfaedle_a_gtfs_zip <- function(path_to_gtfs_zip, path_to_osm = dir_output("opens
   prepare_osm_for_pfaedle(path_to_osm, paste0(temp_dir_path, "/temp.osm"))
 
   pfaedle_args <- c(
-    "-D",
+    #"-D",
     "-c", dir_support("pfaedle.cfg"),
     "-x", paste0(temp_dir_path, "/temp.osm"),
     temp_dir_path,

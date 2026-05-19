@@ -4,6 +4,17 @@ gtfs_parochialise <- function(
   additional_stop_ids = config::get()$additional_stop_ids,
   temporal_bounds = parochial_temporal_bounds()){
 
+  gtfs$stop_times <- gtfs$stop_times %>% unique()
+  gtfs$trips <- gtfs$trips %>% unique()
+
+  broken_trip_ids <- gtfs$trips %>% 
+    dplyr::group_by(trip_id) %>% 
+    dplyr::filter(n() > 1) %>%
+    dplyr::pull(trip_id)
+
+  gtfs$trips <- gtfs$trips %>% dplyr::filter(!(trip_id %in% broken_trip_ids))
+  gtfs$stop_times <- gtfs$stop_times %>% dplyr::filter(!(trip_id %in% broken_trip_ids))
+
   gtfs <- gtfs %>%
     gtfs_keep_in_spatial_bounds(spatial_bounds, additional_stop_ids) %>%
     gtfs_keep_in_temporal_bounds(temporal_bounds) %>%

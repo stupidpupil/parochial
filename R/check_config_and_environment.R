@@ -76,32 +76,6 @@ check_config_and_environment <- function(){
 		advice_on_failure = "Try: https://clydedacruz.github.io/openstreetmap-wkt-playground/"
 		)
 
-	config_yaml_exists %>%
-	check(
-		title = "atoc_username and atoc_password are set", 
-		check_func = function(){!is.null(config::get()$atoc_username) & !is.null(config::get()$atoc_password)},
-		advice_on_failure = "Register for an ATOC user account at http://data.atoc.org/user/register"
-		) %>%
-	check(
-		title = "can log into the ATOC website", 
-		check_func = function(){get_atoc_download_url() %>% stringr::str_detect("atoc.org")},
-		advice_on_failure = "Check that you can login at http://data.atoc.org/user/login"
-		)
-
-	config_yaml_exists %>%
-	check(
-		title = "tnds_username and tnds_password set", 
-		check_func = function(){!is.null(config::get()$tnds_username) & !is.null(config::get()$tnds_password)},
-		advice_on_failure = "Register for a TNDS user account at https://www.travelinedata.org.uk/traveline-open-data/traveline-national-dataset/"
-		) %>%
-	check(
-		title = "can log into TNDS", 
-		check_func = function(){
-			readr::read_lines(paste0("ftp://",config::get()$tnds_username,":",config::get()$tnds_password,"@ftp.tnds.basemap.co.uk/"))
-			return(TRUE)
-			},
-		advice_on_failure = "Check that you can login to the TNDS FTP server"
-		)
 
 	osmium_install_advice <- function(){
 		if(Sys.info()["sysname"] == "Linux"){

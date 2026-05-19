@@ -1,5 +1,5 @@
 - name: Download osrm artifact
-  uses: actions/download-artifact@v2
+  uses: actions/download-artifact@v8
   with:
     name: osrm
     path: osrm-backend

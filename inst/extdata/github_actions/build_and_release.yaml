@@ -24,14 +24,8 @@ jobs:
   prepare_osrm_graph:
     parochial_merge: jobs/prepare_osrm_graph
 
-  download_and_prepare_atoc:
-    parochial_merge: jobs/download_and_prepare_atoc
-
-  download_and_prepare_tnds:
-    parochial_merge: jobs/download_and_prepare_tnds
-
-  download_and_prepare_bods:
-    parochial_merge: jobs/download_and_prepare_bods
+  download_and_prepare_gtfs:
+    parochial_merge: jobs/download_and_prepare_gtfs
 
   merge_and_pfaedle_gtfs:
     parochial_merge: jobs/merge_and_pfaedle_gtfs

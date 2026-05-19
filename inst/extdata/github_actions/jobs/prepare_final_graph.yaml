@@ -8,7 +8,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v6
 
   - parochial_replace_with: download_artefact_merged_gtfs
 
@@ -39,7 +39,7 @@ steps:
       download_otp()
     shell: Rscript {0}
 
-  - parochial_replace_with: setup_java
+  - parochial_replace_with: setup_java_25
     if: steps.cache_transport_graph.outputs.cache-hit != 'true'
   
   - name: Prepare transport graph
@@ -50,7 +50,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload transport graph artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v7
     with:
       name: graph.obj
       path: output/opentripplanner/graph.obj*

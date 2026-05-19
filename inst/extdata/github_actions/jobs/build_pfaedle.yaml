@@ -2,12 +2,11 @@ runs-on: macOS-latest
 env:
   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v5
     with:
-      repository: 'stupidpupil/pfaedle'
+      repository: 'ad-freiburg/pfaedle'
       submodules: true
       path: 'pfaedle'
-      ref: 'macos-patches'
 
   - name: Get pfaedle ref
     id: pfaedle-ref
@@ -17,7 +16,7 @@ steps:
 
   - name: Cache pfaedle-build
     id: cache_pfaedle_build
-    uses: actions/cache@v3
+    uses: actions/cache@v5
     with:
       path: |
         pfaedle-build
@@ -37,7 +36,7 @@ steps:
     shell: bash
 
   - name: Upload pfaedle artefact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v7
     with:
       name: pfaedle
       path: pfaedle-build

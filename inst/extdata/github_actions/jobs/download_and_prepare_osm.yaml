@@ -3,7 +3,7 @@ parochial_merge:
   - env
 
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v5
 
   - name: Get Geofabrik ETag
     id: geofabrik_etag
@@ -12,7 +12,7 @@ steps:
 
   - name: Cache OSM
     id: cache_osm
-    uses: actions/cache@v3
+    uses: actions/cache@v5
     with:
       path: |
         output/openstreetmap/*
@@ -32,7 +32,7 @@ steps:
     shell: Rscript {0}
 
   - name: Upload OpenStreetMap artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v4
     with:
       name: openstreetmap
       path: output/openstreetmap/*

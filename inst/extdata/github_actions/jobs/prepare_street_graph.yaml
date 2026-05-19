@@ -44,7 +44,7 @@ steps:
       key: ${{ hashFiles('output/*terr50*') }}
 
 
-  - parochial_replace_with: setup_java
+  - parochial_replace_with: setup_java_25
     if: steps.cache_street_graph.outputs.cache-hit != 'true'
 
   - name: Prepare street graph
