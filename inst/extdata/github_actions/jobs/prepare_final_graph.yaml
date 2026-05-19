@@ -3,7 +3,7 @@ needs: [
   'prepare_street_graph', 
   'merge_and_pfaedle_gtfs']
 
-runs-on: macOS-latest
+runs-on: ubuntu-latest
 parochial_merge:
   - env
 

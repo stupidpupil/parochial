@@ -2,7 +2,7 @@ needs: [
   'download_and_prepare_terrain',
   'download_and_prepare_osm',
   'merge_and_pfaedle_gtfs']
-runs-on: ubuntu-24.04
+runs-on: ubuntu-latest
 parochial_merge:
   - env
 

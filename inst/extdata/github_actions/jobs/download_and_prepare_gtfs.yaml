@@ -1,4 +1,4 @@
-runs-on: macOS-latest
+runs-on: ubuntu-latest
 parochial_merge:
   - env
 

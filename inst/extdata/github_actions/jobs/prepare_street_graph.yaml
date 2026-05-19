@@ -1,7 +1,8 @@
 needs: [
   'download_and_prepare_terrain',
   'download_and_prepare_osm']
-runs-on: macOS-latest
+  
+runs-on: ubuntu-latest
 parochial_merge:
   - env
 
