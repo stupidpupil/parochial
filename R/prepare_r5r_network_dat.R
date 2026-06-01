@@ -37,7 +37,7 @@ prepare_r5r_network_dat <- function(){
   link_paths <- link_create_with_dir(input_files, dest_dir)
   on.exit({fs::link_delete(link_paths)}, add = TRUE)
 
-  r5_core <- r5r::build_network(data_path = dest_dir)
+  r5_core <- r5r::build_network(data_path = dest_dir, verbose = TRUE)
   r5r::stop_r5(r5_core)
 
   stopifnot("Unknown error writing r5r network.dat" = file.exists(dest_path))
