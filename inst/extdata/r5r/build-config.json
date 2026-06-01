@@ -23,5 +23,5 @@
     },
     "defaultSpeed": 37
   },
-  "maxTransferDistanceMeters": 800
+  "maxTransferDistanceMeters": 600
 }
