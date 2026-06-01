@@ -22,5 +22,6 @@
       "road": 37
     },
     "defaultSpeed": 37
-  }
+  },
+  "maxTransferDistanceMeters": 800
 }
