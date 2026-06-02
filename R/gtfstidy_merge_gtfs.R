@@ -6,6 +6,10 @@ gtfstidy_merge_gtfs <- function(in_gtfs_paths, out_gtfs_path){
   unlink(out_gtfs_path)
 
   gtfstidy_args <- c(
+    "--recluster-stops",
+    "--red-stops-fuzzy",
+    "--drop-single-stop-trips",
+
     "--remove-red-agencies",
     "--remove-red-routes",
     "--remove-red-stops",

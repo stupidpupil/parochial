@@ -4,4 +4,4 @@
 
 - name: Get gtfstidy
   run: |
-    go install github.com/patrickbr/gtfstidy@25d4d6d1079a5926d9a558546bbe36d5b4cdb45f
+    go install github.com/patrickbr/gtfstidy@d4a954bf68703563a6de4e6c3beb841a00063239
