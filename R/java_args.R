@@ -1,8 +1,6 @@
 java_args <- function(){
   c(
-    paste0("-Xmx", java_xmx()),
-    "-XX:ActiveProcessorCount=2",
-    "-Djava.util.concurrent.ForkJoinPool.common.parallelism=2"
+    paste0("-Xmx", java_xmx())
   )
 }
 
